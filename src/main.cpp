@@ -32,8 +32,10 @@ int main() {
                     std::cout << "Order rejected by risk id=" << o.id << "\n";
                     continue;
                 }
-                auto execs = book.submit_order(o);
-                for (auto &e : execs) {
+                nanomarket::exchange::Execution out[128];
+                size_t n = book.submit_order(o, out, 128);
+                for (size_t i = 0; i < n; ++i) {
+                    auto &e = out[i];
                     risk.on_fill(e.price, e.filled_qty, (o.side == Side::Buy) ? Side::Buy : Side::Sell);
                     std::cout << "Exec: resting=" << e.resting_id << " incoming=" << e.incoming_id << " qty=" << e.filled_qty << "@" << e.price << "\n";
                 }

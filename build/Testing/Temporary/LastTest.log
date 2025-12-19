@@ -1,0 +1,35 @@
+Start testing: Dec 18 20:35 Central Standard Time
+----------------------------------------------------------
+1/2 Testing: test_order_book
+1/2 Test: test_order_book
+Command: "C:/Users/jackw/Documents/GitHub/NanoMarket/build/Release/test_order_book.exe"
+Directory: C:/Users/jackw/Documents/GitHub/NanoMarket/build
+"test_order_book" start time: Dec 18 20:35 Central Standard Time
+Output:
+----------------------------------------------------------
+test_order_book: PASS
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"test_order_book" end time: Dec 18 20:35 Central Standard Time
+"test_order_book" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: test_risk
+2/2 Test: test_risk
+Command: "C:/Users/jackw/Documents/GitHub/NanoMarket/build/Release/test_risk.exe"
+Directory: C:/Users/jackw/Documents/GitHub/NanoMarket/build
+"test_risk" start time: Dec 18 20:35 Central Standard Time
+Output:
+----------------------------------------------------------
+test_risk: PASS
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"test_risk" end time: Dec 18 20:35 Central Standard Time
+"test_risk" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Dec 18 20:35 Central Standard Time

@@ -26,6 +26,7 @@ void ms::MarketMaker::run() {
     // Deterministic pseudo-market making loop: place symmetric quotes around ref.
     core::Price ref_price = 10000;
     core::OrderId id_counter = 1;
+    core::Timestamp ts_counter = 1; // deterministic logical timestamp for orders
     while (running_.load(std::memory_order_acquire)) {
         int spread = params_.spread_ticks.load(std::memory_order_relaxed);
         int size = params_.size.load(std::memory_order_relaxed);
@@ -36,7 +37,7 @@ void ms::MarketMaker::run() {
         bid.side = Side::Buy;
         bid.price = ref_price - spread;
         bid.qty = static_cast<Qty>(size);
-        bid.ts = now_ns();
+        bid.ts = ts_counter++;
         out_ring_->push(bid);
 
         // place ask
@@ -44,7 +45,7 @@ void ms::MarketMaker::run() {
         ask.side = Side::Sell;
         ask.id = id_counter++;
         ask.price = ref_price + spread;
-        ask.ts = now_ns();
+        ask.ts = ts_counter++;
         out_ring_->push(ask);
 
         // sleep a deterministic interval (simple throttle)

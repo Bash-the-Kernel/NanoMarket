@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jackw\Documents\GitHub\NanoMarket\build\CMakeFiles\5f700b6b1e92d9ec94d346374efb7401\RUN_TESTS_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D4D55EAF-5470-334B-9A5C-1D22C10688DB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -46,9 +46,9 @@ int32_t em::OrderBook::price_to_level(core::Price p) const noexcept {
     return static_cast<int32_t>(lvl);
 }
 
-std::vector<em::Execution> em::OrderBook::submit_order(const Order& o) noexcept {
-    // Single-threaded deterministic matching loop
-    std::vector<Execution> execs;
+size_t em::OrderBook::submit_order(const Order& o, Execution* out, size_t max_out) noexcept {
+    // Single-threaded deterministic matching loop; write executions into caller buffer
+    size_t produced = 0;
 
     bool is_market = (o.price == 0);
     int incoming_remaining = o.qty;
@@ -61,8 +61,9 @@ std::vector<em::Execution> em::OrderBook::submit_order(const Order& o) noexcept 
             while (cur != -1 && incoming_remaining > 0) {
                 Order& r = pool_[cur];
                 int filled = std::min<int>(incoming_remaining, r.remaining);
-                Execution e{r.id, o.id, static_cast<Qty>(filled), r.price, now_ns()};
-                execs.push_back(e);
+                // Use deterministic execution timestamp: internal sequential counter.
+                if (produced < max_out) out[produced] = Execution{r.id, o.id, static_cast<Qty>(filled), r.price, exec_seq_++};
+                ++produced;
                 r.remaining -= filled;
                 incoming_remaining -= filled;
                 if (r.remaining == 0) {
@@ -88,8 +89,9 @@ std::vector<em::Execution> em::OrderBook::submit_order(const Order& o) noexcept 
             while (cur != -1 && incoming_remaining > 0) {
                 Order& r = pool_[cur];
                 int filled = std::min<int>(incoming_remaining, r.remaining);
-                Execution e{r.id, o.id, static_cast<Qty>(filled), r.price, now_ns()};
-                execs.push_back(e);
+                // Use deterministic execution timestamp: internal sequential counter.
+                if (produced < max_out) out[produced] = Execution{r.id, o.id, static_cast<Qty>(filled), r.price, exec_seq_++};
+                ++produced;
                 r.remaining -= filled;
                 incoming_remaining -= filled;
                 if (r.remaining == 0) {
@@ -114,7 +116,8 @@ std::vector<em::Execution> em::OrderBook::submit_order(const Order& o) noexcept 
         Order resting = o;
         resting.qty = incoming_remaining;
         resting.remaining = incoming_remaining;
-        resting.ts = now_ns();
+        // Preserve incoming deterministic timestamp instead of using system clock
+        resting.ts = o.ts;
         int32_t idx = alloc_order(resting);
         if (idx >= 0) {
             int lvl = price_to_level(resting.price);
@@ -130,7 +133,7 @@ std::vector<em::Execution> em::OrderBook::submit_order(const Order& o) noexcept 
         }
     }
 
-    return execs;
+    return produced;
 }
 
 bool em::OrderBook::cancel(core::OrderId id) noexcept {

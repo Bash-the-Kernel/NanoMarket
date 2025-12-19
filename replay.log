@@ -1,0 +1,7 @@
+TS=1,RISK,position=0,notional=0
+TS=0,EXEC,rest=1,in=2,qty=3,px=10000
+TS=2,RISK,position=-3,notional=30000
+TS=3,RISK,position=-3,notional=30000
+TS=1,EXEC,rest=1,in=4,qty=2,px=10000
+TS=4,RISK,position=-5,notional=50000
+TS=5,RISK,position=-5,notional=50000

@@ -21,8 +21,10 @@ public:
 
     explicit OrderBook(const Config& cfg) noexcept;
 
-    // Submit order into book; matching occurs immediately (single-threaded). Returns executions.
-    std::vector<Execution> submit_order(const Order& o) noexcept;
+    // Submit order into book; matching occurs immediately (single-threaded).
+    // Writes up to `max_out` Execution entries into `out` and returns the number written.
+    // No heap allocation occurs in the hot path.
+    size_t submit_order(const Order& o, Execution* out, size_t max_out) noexcept;
 
     // Cancel order by id (best-effort)
     bool cancel(core::OrderId id) noexcept;
@@ -37,6 +39,7 @@ private:
     // price levels represented as heads of singly linked lists (indices into pool_)
     std::vector<int32_t> bids_; // index 0 best_bid
     std::vector<int32_t> asks_; // index 0 best_ask
+    int64_t exec_seq_{0};
 
     // helper methods
     int32_t alloc_order(const Order& o) noexcept;

@@ -1,0 +1,8 @@
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/nanomarket_core.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/nanomarket.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/main_replay.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/test_order_book.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/test_risk.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/jackw/Documents/GitHub/NanoMarket/build/CMakeFiles/ZERO_CHECK.dir

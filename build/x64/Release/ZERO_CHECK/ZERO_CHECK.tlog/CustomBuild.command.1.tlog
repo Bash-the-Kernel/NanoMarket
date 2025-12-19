@@ -1,0 +1,10 @@
+^C:\USERS\JACKW\DOCUMENTS\GITHUB\NANOMARKET\BUILD\CMAKEFILES\5F700B6B1E92D9EC94D346374EFB7401\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/jackw/Documents/GitHub/NanoMarket -BC:/Users/jackw/Documents/GitHub/NanoMarket/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/jackw/Documents/GitHub/NanoMarket/build/nanomarket.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,6 @@
+C:\Users\jackw\Documents\GitHub\NanoMarket\src\exchange\market_replayer.cpp;C:\Users\jackw\Documents\GitHub\NanoMarket\build\nanomarket_core.dir\Release\market_replayer.obj
+C:\Users\jackw\Documents\GitHub\NanoMarket\src\exchange\order_book.cpp;C:\Users\jackw\Documents\GitHub\NanoMarket\build\nanomarket_core.dir\Release\order_book.obj
+C:\Users\jackw\Documents\GitHub\NanoMarket\src\latency\timer.cpp;C:\Users\jackw\Documents\GitHub\NanoMarket\build\nanomarket_core.dir\Release\timer.obj
+C:\Users\jackw\Documents\GitHub\NanoMarket\src\main_replay.cpp;C:\Users\jackw\Documents\GitHub\NanoMarket\build\nanomarket_core.dir\Release\main_replay.obj
+C:\Users\jackw\Documents\GitHub\NanoMarket\src\risk\risk.cpp;C:\Users\jackw\Documents\GitHub\NanoMarket\build\nanomarket_core.dir\Release\risk.obj
+C:\Users\jackw\Documents\GitHub\NanoMarket\src\strategy\strategy.cpp;C:\Users\jackw\Documents\GitHub\NanoMarket\build\nanomarket_core.dir\Release\strategy.obj
